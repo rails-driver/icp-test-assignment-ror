@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: claims
+#
+#  id                       :integer          not null, primary key
+#  price_drop               :integer          default(0)
+#  percentage_drop          :integer          default(0)
+#  status                   :integer          default(1)
+#  cap_drop                 :integer          default(0)
+#  company_id               :integer
+#  traded_inflation         :integer          default(0)
+#  signed_losses            :integer          default(0)
+#  total_potential_income   :integer          default(0)
+#  current_potential_income :integer          default(0)
+#  data_provided            :text
+#  likely_bookbuild         :text
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#
+
+class ClaimSerializer < ActiveModel::Serializer
+  attributes :id, :price_drop, :percentage_drop, :status, :cap_drop, :traded_inflation, :signed_losses, :total_potential_income, :current_potential_income, :data_provided, :likely_bookbuild
+  belongs_to :company
+end

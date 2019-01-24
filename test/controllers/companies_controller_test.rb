@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @company = companies(:one)
+    @company = create(:company)
   end
 
   test "should get index" do
@@ -12,7 +12,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create company" do
     assert_difference('Company.count') do
-      post companies_url, params: { company: { address: @company.address, email: @company.email, name: @company.name, phone: @company.phone, website: @company.website } }, as: :json
+      post companies_url, params: { company: attributes_for(:company) }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update company" do
-    patch company_url(@company), params: { company: { address: @company.address, email: @company.email, name: @company.name, phone: @company.phone, website: @company.website } }, as: :json
+    patch company_url(@company), params: { company: attributes_for(:company) }, as: :json
     assert_response 200
   end
 

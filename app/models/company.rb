@@ -14,4 +14,5 @@
 
 class Company < ApplicationRecord
   has_one :contact
+  has_many :claims
 end

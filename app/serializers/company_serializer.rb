@@ -16,4 +16,5 @@ class CompanySerializer < ActiveModel::Serializer
   attributes :id, :name, :address, :phone, :email, :website
 
   has_one :contact
+  has_many :claims
 end
