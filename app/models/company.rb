@@ -13,4 +13,5 @@
 #
 
 class Company < ApplicationRecord
+  has_one :contact
 end

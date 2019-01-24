@@ -1,19 +1,22 @@
 # == Schema Information
 #
-# Table name: companies
+# Table name: contacts
 #
 #  id         :integer          not null, primary key
 #  name       :string           default("")
 #  address    :string           default("")
 #  phone      :string           default("")
 #  email      :string           default("")
-#  website    :string           default("")
+#  position   :string           default("")
+#  company_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class CompanySerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :phone, :email, :website
+class Contact < ApplicationRecord
+  belongs_to :company, optional: true
 
-  has_one :contact
+  with_options if: :company_id do |contact|
+    contact.validates :company, presence: true
+  end
 end

@@ -1,19 +1,22 @@
 # == Schema Information
 #
-# Table name: companies
+# Table name: contacts
 #
 #  id         :integer          not null, primary key
 #  name       :string           default("")
 #  address    :string           default("")
 #  phone      :string           default("")
 #  email      :string           default("")
-#  website    :string           default("")
+#  position   :string           default("")
+#  company_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class CompanySerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :phone, :email, :website
+require 'test_helper'
 
-  has_one :contact
+class ContactTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
