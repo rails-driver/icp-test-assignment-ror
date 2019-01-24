@@ -14,5 +14,7 @@
 
 class Company < ApplicationRecord
   has_one :contact
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   has_many :claims
 end

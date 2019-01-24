@@ -17,6 +17,7 @@ require 'rails/test_unit/railtie'
 Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
+TOKEN_EXPIRE = (5 || ENV['TOKEN_EXPIRE']).minutes
 module IcpTest
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -33,5 +34,6 @@ module IcpTest
     config.generators do |g|
       g.fixture_replacement :factory_girl
     end
+    config.autoload_paths << Rails.root.join('app', 'services')
   end
 end

@@ -19,4 +19,7 @@ class Contact < ApplicationRecord
   with_options if: :company_id do |contact|
     contact.validates :company, presence: true
   end
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
 end
